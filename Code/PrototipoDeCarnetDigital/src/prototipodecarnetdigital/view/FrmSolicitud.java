@@ -9,6 +9,7 @@ import ec.edu.espe.datamanager.utils.MongoDBManager;
 import ec.edu.espe.datamanager.utils.NSQLDBManager;
 import javax.swing.JOptionPane;
 import prototipodecarnetdigital.controller.EstudianteController;
+import prototipodecarnetdigital.controller.TablasController;
 
 /**
  *
@@ -180,9 +181,9 @@ public class FrmSolicitud extends javax.swing.JFrame {
 
                 JOptionPane.showMessageDialog(null, "Information was saved", txtNombres.getText() + "Saved", JOptionPane.INFORMATION_MESSAGE);
 
-      //          EstudianteController student1 = new EstudianteController();
-        //        NSQLDBManager mongo = new MongoDBManager();
-          //      mongo.openConection("Name");
+                EstudianteController student1 = new EstudianteController();
+                NSQLDBManager mongo = new MongoDBManager();
+                mongo.openConection("Name");
 
                 MongoDBManager.create(student1.request(txtNombres.getText(), txtID.getText(),
                         lstCarrera.getSelectedValue().toString(), txtDireccion.getText(), spnEdad.getValue().toString()));
@@ -191,9 +192,8 @@ public class FrmSolicitud extends javax.swing.JFrame {
                         lstCarrera.getSelectedValue().toString(), txtDireccion.getText(), spnEdad.getValue().toString()));
 
                    
-  //              TablesController studentC = new TablesController();
-//                   tblStudent.setModel(studentC.tableStudent());
-    //            MongoDBManager.getMongoC().close();
+             
+                MongoDBManager.getMongoC().close();
 
                 System.out.println("===========================================================");
                 System.out.println("Your request has been successfully saved!!");
