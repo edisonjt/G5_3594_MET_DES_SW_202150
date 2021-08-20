@@ -168,7 +168,7 @@ public class FrmSolicitud extends javax.swing.JFrame {
 
         try {
 
-            String dataToSave = "The next Data will be save \n"
+            String dataToSave = "La siguiente información será enviada: \n"
                     + txtNombres.getText() + "\n"
                     + txtID.getText() + "\n"
                     + lstCarrera.getSelectedValue().toString() + "\n"
@@ -178,8 +178,6 @@ public class FrmSolicitud extends javax.swing.JFrame {
             int selection = JOptionPane.showConfirmDialog(null, dataToSave, "Datos a Enviar", JOptionPane.YES_NO_CANCEL_OPTION);
 
             if (selection == 0) {
-
-                JOptionPane.showMessageDialog(null, "Information was saved", txtNombres.getText() + "Saved", JOptionPane.INFORMATION_MESSAGE);
 
                 EstudianteController student1 = new EstudianteController();
                 NSQLDBManager mongo = new MongoDBManager();
@@ -198,7 +196,7 @@ public class FrmSolicitud extends javax.swing.JFrame {
                 System.out.println("===========================================================");
                 System.out.println("Your request has been successfully saved!!");
                 System.out.println("===========================================================");
-
+                JOptionPane.showMessageDialog(null, "Información enviada.", txtNombres.getText() + "Enviado", JOptionPane.INFORMATION_MESSAGE);
                 LoginForm menu = new LoginForm();
                 this.setVisible(false);
                 menu.setVisible(true);

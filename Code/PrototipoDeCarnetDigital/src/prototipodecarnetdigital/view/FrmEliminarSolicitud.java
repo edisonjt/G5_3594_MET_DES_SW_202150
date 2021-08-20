@@ -59,13 +59,21 @@ public class FrmEliminarSolicitud extends javax.swing.JFrame {
 
         tblStudent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombres", "ID", "Carrera", "Dirección", "Edad"
             }
         ));
         jScrollPane1.setViewportView(tblStudent);
@@ -159,27 +167,29 @@ public class FrmEliminarSolicitud extends javax.swing.JFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         try {
 
-            String dataToSave = "The next Data will be Delete \n"
+            String dataToSave = "El siguiente ID sera eliminado: \n"
                     + txtId.getText() + "\n";
             
-
             int selection = JOptionPane.showConfirmDialog(null, dataToSave, "Eliminar Solicitud", JOptionPane.YES_NO_CANCEL_OPTION);
 
             if (selection == 0) {
-
                 
                 NSQLDBManager mongo = new MongoDBManager();
                 Persistance field = new MongoDBManager();
                 mongo.openConection("Name");
                 field.delete("ID", txtId.getText());
+                txtId.setText("");
+                TablasController studentC = new TablasController();
+                tblStudent.setModel(studentC.tableStudent());
+                MongoDBManager.getMongoC().close();
                 JOptionPane.showMessageDialog(null, "Solicitud Eliminada", txtId.getText() + "Eliminado", JOptionPane.INFORMATION_MESSAGE);
           
 
             } else if (selection == 1) {
-                JOptionPane.showMessageDialog(null, "La informacion no se borro.", txtId.getText() + "Not saved", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "La informacion no se borro.", txtId.getText() + "No Guardado", JOptionPane.ERROR_MESSAGE);
    
             } else {
-                JOptionPane.showMessageDialog(null, "Cancelado.", txtId.getText() + "Canceled", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se cancelo la acci[on.", txtId.getText() + "Cancelado", JOptionPane.WARNING_MESSAGE);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se ingreso ningun dato, por favor vuelva a ingresar.", txtId.getText() + "ERROR", JOptionPane.WARNING_MESSAGE);
