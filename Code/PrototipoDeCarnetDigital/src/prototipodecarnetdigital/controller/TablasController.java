@@ -27,7 +27,7 @@ public class TablasController {
         DBCollection collections = BaseData.getCollection("Name");
         DBCursor cursor = collections.find();
 
-        String[] columnNames = {"Nombres", "ID", "Carrera",
+        String[] columnNames = {"Nombres", "ID", "Correo", "Carrera",
             "Dirección", "Edad"};
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 
@@ -35,10 +35,11 @@ public class TablasController {
             DBObject obj = cursor.next();
             String name = (String) obj.get("Name");
             String id = (String) obj.get("ID");
+            String correo = (String) obj.get("Correo");
             String career = (String) obj.get("Career");
             String email = (String) obj.get("Address");
             String Address = (String) obj.get("Age").toString();
-            model.addRow(new Object[]{name, id, career, email, Address});
+            model.addRow(new Object[]{name, id, correo, career, email, Address});
         }
         return model;
     }

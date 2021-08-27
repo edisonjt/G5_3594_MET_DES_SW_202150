@@ -15,9 +15,10 @@ import com.mongodb.DBObject;
 public class EstudianteController {
     
     BasicDBObject document = new BasicDBObject();
-    public DBObject request(String name, String id, String career, String address, String age) {
+    public DBObject request(String name, String id, String correo, String career, String address, String age) {
         document.put("Name", name);
         document.put("ID", id);
+        document.put("Correo", correo);
         document.put("Career", career);
         document.put("Address", address);
         document.put("Age", age);
