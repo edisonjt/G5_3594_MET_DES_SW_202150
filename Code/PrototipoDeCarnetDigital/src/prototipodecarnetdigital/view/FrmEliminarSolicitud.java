@@ -179,6 +179,11 @@ public class FrmEliminarSolicitud extends javax.swing.JFrame {
                 mongo.openConection("Name");
                 field.delete("ID", txtId.getText());
                 txtId.setText("");
+                txtId.setText("");
+                txtId.setText("");
+                txtId.setText("");
+                txtId.setText("");
+                txtId.setText("");
                 TablasController studentC = new TablasController();
                 tblStudent.setModel(studentC.tableStudent());
                 MongoDBManager.getMongoC().close();
