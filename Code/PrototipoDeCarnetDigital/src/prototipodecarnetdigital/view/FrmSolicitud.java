@@ -22,6 +22,7 @@ public class FrmSolicitud extends javax.swing.JFrame {
      */
     public FrmSolicitud() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

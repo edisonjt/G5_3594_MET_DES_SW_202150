@@ -5,9 +5,15 @@
  */
 package prototipodecarnetdigital.view;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.MessagingException;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import prototipodecarnetdigital.controller.ImagenesController;
 import prototipodecarnetdigital.controller.ImprimirCarnet;
 
 /**
@@ -16,11 +22,17 @@ import prototipodecarnetdigital.controller.ImprimirCarnet;
  */
 public class FrmGenerarCarnet extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmGenerarCarnet
-     */
+    
+    
     public FrmGenerarCarnet() {
+       
+        
         initComponents();
+        
+        this.setLocation(850, 150);
+        ImagenesController imagen = new ImagenesController();
+        pnlCarnet.add(imagen);
+        pnlCarnet.repaint();
     }
 
     /**
@@ -33,7 +45,6 @@ public class FrmGenerarCarnet extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlCarnet = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         txtNameRX = new javax.swing.JTextField();
         lblImagen = new javax.swing.JLabel();
         txtCarreraRX = new javax.swing.JTextField();
@@ -43,7 +54,10 @@ public class FrmGenerarCarnet extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("UNIVERSIDAD DE LAS FUERZAS ARMADAS");
+        pnlCarnet.setBackground(new java.awt.Color(204, 204, 204));
+
+        txtNameRX.setBackground(new java.awt.Color(204, 204, 204));
+        txtNameRX.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         txtCarreraRX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,32 +70,32 @@ public class FrmGenerarCarnet extends javax.swing.JFrame {
         pnlCarnetLayout.setHorizontalGroup(
             pnlCarnetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCarnetLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCarnetLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlCarnetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtCorreoRX, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNameRX, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCarreraRX, javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlCarnetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCarnetLayout.createSequentialGroup()
+                        .addComponent(txtCarreraRX)
+                        .addGap(19, 19, 19))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCarnetLayout.createSequentialGroup()
+                        .addComponent(txtNameRX)
+                        .addContainerGap())
                     .addGroup(pnlCarnetLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1)))
-                .addGap(19, 19, 19))
+                        .addComponent(txtCorreoRX, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCarnetLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
         pnlCarnetLayout.setVerticalGroup(
             pnlCarnetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCarnetLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addGap(115, 115, 115)
+                .addComponent(txtNameRX)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtNameRX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
                 .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(txtCorreoRX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtCorreoRX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addComponent(txtCarreraRX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -134,13 +148,13 @@ public class FrmGenerarCarnet extends javax.swing.JFrame {
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-        FrmNomina nomina = new FrmNomina();
-        String correo = txtCorreoRX.getText();
-    
+        String correo = txtCorreoRX.getText();    
    
         ImprimirCarnet carnet = new ImprimirCarnet();
         try {
             carnet.enviarCorreo(correo);
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Carnet Enviado Correctamente.");
         } catch (MessagingException ex) {
             Logger.getLogger(FrmGenerarCarnet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -184,7 +198,6 @@ public class FrmGenerarCarnet extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnEnviar;
     private javax.swing.JButton btnImprimir;
-    private javax.swing.JLabel jLabel1;
     public javax.swing.JLabel lblImagen;
     private javax.swing.JPanel pnlCarnet;
     public javax.swing.JTextField txtCarreraRX;

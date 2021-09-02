@@ -5,7 +5,6 @@
  */
 package prototipodecarnetdigital.view;
 
-
 import com.google.zxing.qrcode.encoder.QRCode;
 import ec.edu.espe.datamanager.controller.Persistance;
 import ec.edu.espe.datamanager.utils.MongoDBManager;
@@ -27,6 +26,7 @@ public class FrmNomina extends javax.swing.JFrame {
      */
     public FrmNomina() {
         initComponents();
+        this.setLocation(50, 65);
     }
 
     /**
@@ -239,21 +239,19 @@ public class FrmNomina extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      TablasController studentC = new TablasController();
-      tblStudent.setModel(studentC.tableStudent());
+        TablasController studentC = new TablasController();
+        tblStudent.setModel(studentC.tableStudent());
         MongoDBManager.getMongoC().close();
-    
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         FrmMenuPrincipal menu = new FrmMenuPrincipal();
-   
-    
+
         this.setVisible(false);
-  
+
         menu.setVisible(true);
-        
-        
+
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -278,34 +276,42 @@ public class FrmNomina extends javax.swing.JFrame {
     }//GEN-LAST:event_tblStudentMouseClicked
 
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
-        if (txtID != null) {
-            NSQLDBManager mongo = new MongoDBManager();
-            Persistance field = new MongoDBManager();
-            mongo.openConection("Name");
-    //        field.delete("ID", txtID.getText());
+        int confirmado = JOptionPane.showConfirmDialog(null, "¿Estas seguro que deseas generar un carnet digital?");
 
-            TablasController studentC = new TablasController();
-            tblStudent.setModel(studentC.tableStudent());
-            MongoDBManager.getMongoC().close();
+        if (JOptionPane.OK_OPTION == confirmado) {
+            JOptionPane.showMessageDialog(null, "Generando Carnet Digital...");
+            if (txtID != null) {
+                NSQLDBManager mongo = new MongoDBManager();
+                mongo.openConection("Name");
+                //        field.delete("ID", txtID.getText());
 
-            FrmGenerarCarnet carnet = new FrmGenerarCarnet();
-            carnet.setVisible(true);
-            carnet.txtNameRX.setText(txtNombre.getText());
-            carnet.txtCarreraRX.setText(txtCarrera.getText());
-            carnet.txtCorreoRX.setText(txtCorreo.getText());
-            
-            String product = "ID: " + txtID.getText();
+                TablasController studentC = new TablasController();
+                tblStudent.setModel(studentC.tableStudent());
+                MongoDBManager.getMongoC().close();
 
-            if (product.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Product is empty");
-            } else {
-                byte[] result = QR.getQRCodeImage(product, 150, 200);
+                FrmGenerarCarnet carnet = new FrmGenerarCarnet();
                 carnet.setVisible(true);
-                carnet.lblImagen.setIcon(new ImageIcon(result));
-            }
-        //    clean();
+                carnet.txtNameRX.setText(txtNombre.getText());
+                carnet.txtCarreraRX.setText(txtCarrera.getText());
+                carnet.txtCorreoRX.setText(txtCorreo.getText());
 
+                String product = txtID.getText();
+
+                if (product.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Product is empty");
+                } else {
+                    byte[] result = QR.getQRCodeImage(product, 150, 200);
+                    carnet.setVisible(true);
+                    carnet.lblImagen.setIcon(new ImageIcon(result));
+                }
+                clean();
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se genero ningun carnet");
         }
+
+
     }//GEN-LAST:event_btnGenerarActionPerformed
 
     private void btnCerrarCarnetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarCarnetActionPerformed

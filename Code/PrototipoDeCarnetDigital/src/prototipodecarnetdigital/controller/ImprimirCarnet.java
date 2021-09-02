@@ -27,6 +27,8 @@ import javax.mail.internet.MimeMultipart;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import prototipodecarnetdigital.view.FrmGenerarCarnet;
+import prototipodecarnetdigital.view.FrmNomina;
 
 /**
  *
@@ -47,7 +49,7 @@ public class ImprimirCarnet {
 
                 Graphics2D graphics2D = (Graphics2D) graphics;
                 graphics2D.translate(pageFormat.getImageableX() - 2, pageFormat.getImageableY() - 2);
-                graphics2D.scale(2.3, 2.3);
+                graphics2D.scale(2.70, 2.3);
 
                 panel.paint(graphics2D);
 
@@ -71,6 +73,7 @@ public class ImprimirCarnet {
     }
 
     public void enviarCorreo(String destinatario) throws MessagingException {
+        
         try {
             // se obtiene el objeto Session. La configuración es para
             // una cuenta de gmail.
@@ -100,7 +103,7 @@ public class ImprimirCarnet {
             // Se compone el adjunto con la imagen
             BodyPart adjunto = new MimeBodyPart();
             adjunto.setDataHandler(new DataHandler(new FileDataSource(""+archivoSeleccionado)));
-            adjunto.setFileName(""+archivoSeleccionado);
+            adjunto.setFileName("Universidad de las Fuerzas Armadas - ESPE"+archivoSeleccionado.getName());
 
             // Una MultiParte para agrupar texto e imagen.
             MimeMultipart multiParte = new MimeMultipart();
@@ -117,7 +120,7 @@ public class ImprimirCarnet {
 
             // Se envia el correo.
             Transport t = session.getTransport("smtp");
-            t.connect("eduinfantilmin2021@gmail.com", "2897479852");
+            t.connect("carnetizaciondigital2021@gmail.com", "2897479852");
             t.sendMessage(message, message.getAllRecipients());
             t.close();
         } catch (Exception e) {
