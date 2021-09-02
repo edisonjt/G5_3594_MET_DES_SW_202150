@@ -24,7 +24,7 @@ public class ImagenesController extends javax.swing.JPanel {
         Dimension height = getSize();
 
 //Se selecciona la imagen que tenemos en el paquete de la //ruta del programa
-        ImageIcon Img = new ImageIcon(getClass().getResource("/Imagenes/PrototipoCarnet.png"));
+        ImageIcon Img = new ImageIcon(getClass().getResource("/Imagenes/Prototipo.png"));
 
 //se dibuja la imagen que tenemos en el paquete Images //dentro de un panel
         grafico.drawImage(Img.getImage(), 0, 0, 225, 380, null);
