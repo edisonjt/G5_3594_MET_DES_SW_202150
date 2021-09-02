@@ -56,14 +56,17 @@ public class FrmGenerarCarnet extends javax.swing.JFrame {
 
         pnlCarnet.setBackground(new java.awt.Color(204, 204, 204));
 
-        txtNameRX.setBackground(new java.awt.Color(204, 204, 204));
+        txtNameRX.setBorder(null);
         txtNameRX.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
+        txtCarreraRX.setBorder(null);
         txtCarreraRX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCarreraRXActionPerformed(evt);
             }
         });
+
+        txtCorreoRX.setBorder(null);
 
         javax.swing.GroupLayout pnlCarnetLayout = new javax.swing.GroupLayout(pnlCarnet);
         pnlCarnet.setLayout(pnlCarnetLayout);
@@ -72,32 +75,27 @@ public class FrmGenerarCarnet extends javax.swing.JFrame {
             .addGroup(pnlCarnetLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlCarnetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCarnetLayout.createSequentialGroup()
-                        .addComponent(txtCarreraRX)
-                        .addGap(19, 19, 19))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCarnetLayout.createSequentialGroup()
-                        .addComponent(txtNameRX)
-                        .addContainerGap())
-                    .addGroup(pnlCarnetLayout.createSequentialGroup()
-                        .addComponent(txtCorreoRX, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
-                        .addContainerGap())))
+                    .addComponent(txtNameRX, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtCorreoRX, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                    .addComponent(txtCarreraRX, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCarnetLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addGap(36, 36, 36))
         );
         pnlCarnetLayout.setVerticalGroup(
             pnlCarnetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCarnetLayout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addComponent(txtNameRX)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(70, 70, 70)
+                .addComponent(txtNameRX, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtCorreoRX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCarreraRX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         btnImprimir.setText("Guardar Carnet");
