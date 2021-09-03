@@ -66,12 +66,10 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, 140, -1));
 
         jLabel2.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("USUARIO:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 68, 21));
 
         jLabel1.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("CARNETIZACIÓN VIRTUAL");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, -1, -1));
 
@@ -81,10 +79,9 @@ public class LoginForm extends javax.swing.JFrame {
                 btnLoginActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 250, 92, -1));
+        jPanel1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, 92, -1));
 
         jLabel3.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("PASSWORD:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, -1, -1));
 
@@ -106,7 +103,7 @@ public class LoginForm extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(802, 363, 91, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 370, 91, -1));
 
         btnSolicitud.setText("Solicitar Carnet Virtual");
         btnSolicitud.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +111,7 @@ public class LoginForm extends javax.swing.JFrame {
                 btnSolicitudActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 330, 160, -1));
+        jPanel1.add(btnSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, 160, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PANORAMICA-ESPE.jpg"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -126,9 +123,8 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 160, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("ESTUDIANTES NUEVOS:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, -1, -1));
+        jLabel8.setText("CARNETIZACIÓN ESTUDIANTES");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoLogin.png"))); // NOI18N
         jLabel5.setText("jLabel5");

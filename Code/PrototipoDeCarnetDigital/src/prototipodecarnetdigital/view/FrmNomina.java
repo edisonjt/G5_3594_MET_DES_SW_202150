@@ -26,8 +26,8 @@ public class FrmNomina extends javax.swing.JFrame {
      */
     public FrmNomina() {
         initComponents();
-        //this.setLocation(50, 65);
-        this.setLocationRelativeTo(null);
+        this.setLocation(50, 65);
+        //this.setLocationRelativeTo(null);
     }
 
     /**
@@ -51,7 +51,6 @@ public class FrmNomina extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtCarrera = new javax.swing.JTextField();
         txtDireccion = new javax.swing.JTextField();
-        btnCerrarCarnet = new javax.swing.JButton();
         btnGenerar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblStudent = new javax.swing.JTable();
@@ -68,17 +67,14 @@ public class FrmNomina extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nombres:");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("ID:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Correo:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
 
@@ -104,12 +100,10 @@ public class FrmNomina extends javax.swing.JFrame {
         jPanel2.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 176, -1));
 
         jLabel7.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Dirección:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Carrera:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, -1, -1));
 
@@ -126,14 +120,6 @@ public class FrmNomina extends javax.swing.JFrame {
             }
         });
         jPanel2.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, 176, -1));
-
-        btnCerrarCarnet.setText("Cerrar Carnet");
-        btnCerrarCarnet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarCarnetActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnCerrarCarnet, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, -1, -1));
 
         btnGenerar.setText("Generar");
         btnGenerar.addActionListener(new java.awt.event.ActionListener() {
@@ -238,14 +224,16 @@ public class FrmNomina extends javax.swing.JFrame {
     }//GEN-LAST:event_tblStudentMouseClicked
 
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
-        int confirmado = JOptionPane.showConfirmDialog(null, "¿Estas seguro que deseas generar un carnet digital?");
+        int confirmado = JOptionPane.showConfirmDialog(null, "¿Estas seguro que deseas generar un carnet digital?\n"
+                + "Una vez que se genere el carnet, la solicitud se eliminara.");
 
         if (JOptionPane.OK_OPTION == confirmado) {
             JOptionPane.showMessageDialog(null, "Generando Carnet Digital...");
             if (txtID != null) {
                 NSQLDBManager mongo = new MongoDBManager();
+                Persistance field = new MongoDBManager();
                 mongo.openConection("Name");
-                //        field.delete("ID", txtID.getText());
+                field.delete("ID", txtID.getText());
 
                 TablasController studentC = new TablasController();
                 tblStudent.setModel(studentC.tableStudent());
@@ -260,7 +248,7 @@ public class FrmNomina extends javax.swing.JFrame {
                 String product = txtID.getText();
 
                 if (product.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Product is empty");
+                    JOptionPane.showMessageDialog(null, "No existen datos.");
                 } else {
                     byte[] result = QR.getQRCodeImage(product, 150, 200);
                     carnet.setVisible(true);
@@ -275,11 +263,6 @@ public class FrmNomina extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnGenerarActionPerformed
-
-    private void btnCerrarCarnetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarCarnetActionPerformed
-        FrmGenerarCarnet carnet = new FrmGenerarCarnet();
-        carnet.setVisible(false);
-    }//GEN-LAST:event_btnCerrarCarnetActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
@@ -334,7 +317,6 @@ public class FrmNomina extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCerrarCarnet;
     public javax.swing.JButton btnGenerar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
