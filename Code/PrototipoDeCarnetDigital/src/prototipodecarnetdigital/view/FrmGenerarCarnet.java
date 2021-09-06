@@ -5,6 +5,7 @@
  */
 package prototipodecarnetdigital.view;
 
+import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.logging.Level;
@@ -13,6 +14,7 @@ import javax.mail.MessagingException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import prototipodecarnetdigital.controller.ImagenesController;
 import prototipodecarnetdigital.controller.ImprimirCarnet;
 
@@ -28,8 +30,10 @@ public class FrmGenerarCarnet extends javax.swing.JFrame {
        
         
         initComponents();
-        
-        this.setLocation(850, 150);
+        txtNameRX.setHorizontalAlignment(JTextField.CENTER);
+        txtCarreraRX.setHorizontalAlignment(JTextField.CENTER);  
+        txtCorreoRX.setHorizontalAlignment(JTextField.CENTER);  
+        this.setLocation(950, 150);
         ImagenesController imagen = new ImagenesController();
         pnlCarnet.add(imagen);
         pnlCarnet.repaint();
@@ -51,6 +55,7 @@ public class FrmGenerarCarnet extends javax.swing.JFrame {
         txtCorreoRX = new javax.swing.JTextField();
         btnImprimir = new javax.swing.JButton();
         btnEnviar = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,6 +63,11 @@ public class FrmGenerarCarnet extends javax.swing.JFrame {
 
         txtNameRX.setBorder(null);
         txtNameRX.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtNameRX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameRXActionPerformed(evt);
+            }
+        });
 
         txtCarreraRX.setBorder(null);
         txtCarreraRX.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +77,7 @@ public class FrmGenerarCarnet extends javax.swing.JFrame {
         });
 
         txtCorreoRX.setBorder(null);
+        txtCorreoRX.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         javax.swing.GroupLayout pnlCarnetLayout = new javax.swing.GroupLayout(pnlCarnet);
         pnlCarnet.setLayout(pnlCarnetLayout);
@@ -74,28 +85,28 @@ public class FrmGenerarCarnet extends javax.swing.JFrame {
             pnlCarnetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCarnetLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlCarnetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNameRX, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtCorreoRX, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
-                    .addComponent(txtCarreraRX, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(pnlCarnetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtNameRX, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCarreraRX, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCorreoRX))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCarnetLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlCarnetLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlCarnetLayout.setVerticalGroup(
             pnlCarnetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCarnetLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(82, 82, 82)
                 .addComponent(txtNameRX, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtCorreoRX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCarreraRX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         btnImprimir.setText("Guardar Carnet");
@@ -112,25 +123,41 @@ public class FrmGenerarCarnet extends javax.swing.JFrame {
             }
         });
 
+        btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(btnImprimir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEnviar))
-            .addComponent(pnlCarnet, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlCarnet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnImprimir)
+                                .addGap(4, 4, 4)
+                                .addComponent(btnEnviar)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlCarnet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
+                .addComponent(pnlCarnet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnImprimir)
                     .addComponent(btnEnviar))
-                .addContainerGap())
+                .addGap(3, 3, 3)
+                .addComponent(btnCerrar))
         );
 
         pack();
@@ -157,6 +184,14 @@ public class FrmGenerarCarnet extends javax.swing.JFrame {
             Logger.getLogger(FrmGenerarCarnet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnEnviarActionPerformed
+
+    private void txtNameRXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameRXActionPerformed
+        
+    }//GEN-LAST:event_txtNameRXActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,6 +229,7 @@ public class FrmGenerarCarnet extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrar;
     public javax.swing.JButton btnEnviar;
     private javax.swing.JButton btnImprimir;
     public javax.swing.JLabel lblImagen;

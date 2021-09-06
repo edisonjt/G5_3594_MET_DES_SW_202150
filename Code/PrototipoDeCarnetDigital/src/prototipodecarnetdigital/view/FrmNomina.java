@@ -26,7 +26,7 @@ public class FrmNomina extends javax.swing.JFrame {
      */
     public FrmNomina() {
         initComponents();
-        this.setLocation(50, 65);
+        this.setLocation(50, 100);
         //this.setLocationRelativeTo(null);
     }
 
@@ -83,21 +83,21 @@ public class FrmNomina extends javax.swing.JFrame {
                 txtNombreActionPerformed(evt);
             }
         });
-        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 176, -1));
+        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 240, -1));
 
         txtID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDActionPerformed(evt);
             }
         });
-        jPanel2.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 176, -1));
+        jPanel2.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 240, -1));
 
         txtCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCorreoActionPerformed(evt);
             }
         });
-        jPanel2.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 176, -1));
+        jPanel2.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 240, -1));
 
         jLabel7.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
         jLabel7.setText("Dirección:");
@@ -112,14 +112,14 @@ public class FrmNomina extends javax.swing.JFrame {
                 txtCarreraActionPerformed(evt);
             }
         });
-        jPanel2.add(txtCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 176, -1));
+        jPanel2.add(txtCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 220, -1));
 
         txtDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDireccionActionPerformed(evt);
             }
         });
-        jPanel2.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, 176, -1));
+        jPanel2.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 220, -1));
 
         btnGenerar.setText("Generar");
         btnGenerar.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +173,7 @@ public class FrmNomina extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 490, 71, -1));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 490, 71, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoEspe (1)_1.png"))); // NOI18N
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
@@ -233,7 +233,7 @@ public class FrmNomina extends javax.swing.JFrame {
                 NSQLDBManager mongo = new MongoDBManager();
                 Persistance field = new MongoDBManager();
                 mongo.openConection("Name");
-                field.delete("ID", txtID.getText());
+          //      field.delete("ID", txtID.getText());
 
                 TablasController studentC = new TablasController();
                 tblStudent.setModel(studentC.tableStudent());
