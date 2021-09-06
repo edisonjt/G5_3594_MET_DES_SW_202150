@@ -233,7 +233,7 @@ public class FrmNomina extends javax.swing.JFrame {
                 NSQLDBManager mongo = new MongoDBManager();
                 Persistance field = new MongoDBManager();
                 mongo.openConection("Name");
-          //      field.delete("ID", txtID.getText());
+                field.delete("ID", txtID.getText());
 
                 TablasController studentC = new TablasController();
                 tblStudent.setModel(studentC.tableStudent());

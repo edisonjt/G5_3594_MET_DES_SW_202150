@@ -5,10 +5,21 @@
  */
 package prototipodecarnetdigital.view;
 
+import ec.edu.espe.datamanager.controller.Persistance;
+import ec.edu.espe.datamanager.utils.MongoDBManager;
+import ec.edu.espe.datamanager.utils.NSQLDBManager;
+import prototipodecarnetdigital.controller.TablasController;
+
 /**
  *
  * @author BryanPC
  */
 public class main {
+    public static void main(String[] args) {
+        NSQLDBManager mongo;
+        Persistance cloud;
+        
+        
+    }
     
 }

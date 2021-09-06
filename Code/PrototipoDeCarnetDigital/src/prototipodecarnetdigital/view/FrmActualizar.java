@@ -15,14 +15,22 @@ import prototipodecarnetdigital.controller.TablasController;
  * @author BryanPC
  */
 public class FrmActualizar extends javax.swing.JFrame {
+
     NSQLDBManager mongo;
     Persistance cloud;
+
     /**
      * Creates new form FrmActualizar
      */
     public FrmActualizar() {
         initComponents();
         this.setLocationRelativeTo(null);
+        txtOldName.setEnabled(false);
+        txtOldID.setEnabled(false);
+        txtOldCorreo.setEnabled(false);
+        txtOldCarrera.setEnabled(false);
+        txtOldDirección.setEnabled(false);
+        txtOldEdad.setEnabled(false);
     }
 
     /**
@@ -42,7 +50,6 @@ public class FrmActualizar extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtNewName = new javax.swing.JTextField();
         txtOldID = new javax.swing.JTextField();
-        txtNewID = new javax.swing.JTextField();
         txtOldCarrera = new javax.swing.JTextField();
         txtNewCarrera = new javax.swing.JTextField();
         txtOldCorreo = new javax.swing.JTextField();
@@ -60,13 +67,8 @@ public class FrmActualizar extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btnNameUpdate = new javax.swing.JButton();
-        btnIDUpdate = new javax.swing.JButton();
-        btnCorreoActualizar = new javax.swing.JButton();
-        btnCarreraActualizar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnEdadActualizar = new javax.swing.JButton();
-        btnDireccionActualizar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
 
@@ -79,37 +81,41 @@ public class FrmActualizar extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("ACTUALIZAR DATOS");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 255));
         jLabel3.setText("Nuevo");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, -1, -1));
 
         txtOldName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtOldNameActionPerformed(evt);
             }
         });
-        jPanel1.add(txtOldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 161, -1));
+        jPanel1.add(txtOldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 230, -1));
 
         jLabel4.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 255));
         jLabel4.setText("Anterior");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, -1));
-        jPanel1.add(txtNewName, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 161, -1));
-        jPanel1.add(txtOldID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 161, -1));
-        jPanel1.add(txtNewID, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 161, -1));
-        jPanel1.add(txtOldCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 161, -1));
-        jPanel1.add(txtNewCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 161, -1));
-        jPanel1.add(txtOldCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 161, -1));
-        jPanel1.add(txtNewCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 161, -1));
-        jPanel1.add(txtOldDirección, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 161, -1));
-        jPanel1.add(txtNewDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 161, -1));
-        jPanel1.add(txtNewEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 161, -1));
-        jPanel1.add(txtOldEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 161, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
+        jPanel1.add(txtNewName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 230, -1));
+        jPanel1.add(txtOldID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 230, -1));
+        jPanel1.add(txtOldCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 230, -1));
+        jPanel1.add(txtNewCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 230, -1));
+        jPanel1.add(txtOldCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 230, -1));
+        jPanel1.add(txtNewCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 230, -1));
+        jPanel1.add(txtOldDirección, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 230, -1));
+        jPanel1.add(txtNewDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 230, -1));
+
+        txtNewEdad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNewEdadActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNewEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 230, -1));
+        jPanel1.add(txtOldEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 230, -1));
 
         tblStudent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -128,6 +134,11 @@ public class FrmActualizar extends javax.swing.JFrame {
                 "Nombres", "ID", "Correo", "Carrera", "Dirección", "Edad"
             }
         ));
+        tblStudent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblStudentMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblStudent);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 810, 160));
@@ -138,7 +149,7 @@ public class FrmActualizar extends javax.swing.JFrame {
                 btnShowActionPerformed(evt);
             }
         });
-        jPanel1.add(btnShow, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
+        jPanel1.add(btnShow, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 530, -1, -1));
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -146,67 +157,29 @@ public class FrmActualizar extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 530, 76, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 530, 76, -1));
 
         jLabel9.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Edad:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 40, -1));
 
         jLabel8.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Dirección:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Carrera:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Correo Institucional:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("ID:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
 
-        btnNameUpdate.setText("Actualizar");
-        btnNameUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNameUpdateActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnNameUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, -1, 20));
-
-        btnIDUpdate.setText("Actualizar");
-        btnIDUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIDUpdateActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnIDUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, -1, 20));
-
-        btnCorreoActualizar.setText("Actualizar");
-        btnCorreoActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCorreoActualizarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnCorreoActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, -1, 20));
-
-        btnCarreraActualizar.setText("Actualizar");
-        btnCarreraActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCarreraActualizarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnCarreraActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, -1, 20));
-
         jLabel2.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre y Apellido:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
@@ -216,15 +189,7 @@ public class FrmActualizar extends javax.swing.JFrame {
                 btnEdadActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEdadActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, -1, 20));
-
-        btnDireccionActualizar.setText("Actualizar");
-        btnDireccionActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDireccionActualizarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnDireccionActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, -1, 20));
+        jPanel1.add(btnEdadActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, -1, -1));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoActualizarDatos.png"))); // NOI18N
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, -1, -1));
@@ -238,7 +203,7 @@ public class FrmActualizar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtOldNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOldNameActionPerformed
-        
+
     }//GEN-LAST:event_txtOldNameActionPerformed
 
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
@@ -253,79 +218,41 @@ public class FrmActualizar extends javax.swing.JFrame {
         menu.setVisible(true);
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void btnNameUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNameUpdateActionPerformed
+    private void btnEdadActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdadActualizarActionPerformed
+        TablasController studentC = new TablasController();
         mongo = new MongoDBManager();
         cloud = new MongoDBManager();
         mongo.openConection("Name");
         cloud.update("Name", txtOldName.getText(), txtNewName.getText());
-        txtOldName.setText("");
-        txtNewName.setText("");
-        TablasController studentC = new TablasController();
-        tblStudent.setModel(studentC.tableStudent());
-        MongoDBManager.getMongoC().close();
-    }//GEN-LAST:event_btnNameUpdateActionPerformed
-
-    private void btnEdadActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdadActualizarActionPerformed
-        mongo = new MongoDBManager();
-        cloud = new MongoDBManager();
-        mongo.openConection("Name");
         String old = txtOldEdad.getText();
-        String newD = txtNewEdad.getText();
-        cloud.update("Age", old, newD);
-        txtOldEdad.setText("");
-        txtNewEdad.setText("");
-        TablasController studentC = new TablasController();
+        String newT = txtNewEdad.getText();
+        cloud.update("Age", old, newT);
+        cloud.update("ID", txtOldID.getText(), txtOldID.getText());
+        cloud.update("Correo", txtOldCorreo.getText(), txtNewCorreo.getText());
+        cloud.update("Career", txtOldCarrera.getText(), txtNewCarrera.getText());      
+        cloud.update("Address", txtOldDirección.getText(), txtNewDireccion.getText());        
         tblStudent.setModel(studentC.tableStudent());
         MongoDBManager.getMongoC().close();
     }//GEN-LAST:event_btnEdadActualizarActionPerformed
 
-    private void btnIDUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIDUpdateActionPerformed
-        mongo = new MongoDBManager();
-        cloud = new MongoDBManager();
-        mongo.openConection("Name");
-        cloud.update("ID", txtOldID.getText(), txtNewID.getText());
-        txtOldID.setText("");
-        txtNewID.setText("");
-        TablasController studentC = new TablasController();
-        tblStudent.setModel(studentC.tableStudent());
-        MongoDBManager.getMongoC().close();
-    }//GEN-LAST:event_btnIDUpdateActionPerformed
+    private void tblStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblStudentMouseClicked
+        int seleccionar = tblStudent.rowAtPoint(evt.getPoint());
+        txtOldName.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 0)));
+        txtNewName.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 0)));
+        txtOldID.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 1)));
+        txtOldCorreo.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 2)));
+        txtNewCorreo.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 2)));
+        txtOldCarrera.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 3)));
+        txtNewCarrera.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 3)));
+        txtOldDirección.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 4)));
+        txtNewDireccion.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 4)));
+        txtOldEdad.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 5)));
+        txtNewEdad.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 5)));
+    }//GEN-LAST:event_tblStudentMouseClicked
 
-    private void btnCorreoActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorreoActualizarActionPerformed
-        mongo = new MongoDBManager();
-        cloud = new MongoDBManager();
-        mongo.openConection("Name");
-        cloud.update("Correo", txtOldCorreo.getText(), txtNewCorreo.getText());
-        txtOldCorreo.setText("");
-        txtNewCorreo.setText("");
-        TablasController studentC = new TablasController();
-        tblStudent.setModel(studentC.tableStudent());
-        MongoDBManager.getMongoC().close();
-    }//GEN-LAST:event_btnCorreoActualizarActionPerformed
-
-    private void btnCarreraActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarreraActualizarActionPerformed
-        mongo = new MongoDBManager();
-        cloud = new MongoDBManager();
-        mongo.openConection("Name");
-        cloud.update("Career", txtOldCarrera.getText(), txtNewCarrera.getText());
-        txtOldCarrera.setText("");
-        txtNewCarrera.setText("");
-        TablasController studentC = new TablasController();
-        tblStudent.setModel(studentC.tableStudent());
-        MongoDBManager.getMongoC().close();
-    }//GEN-LAST:event_btnCarreraActualizarActionPerformed
-
-    private void btnDireccionActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDireccionActualizarActionPerformed
-        mongo = new MongoDBManager();
-        cloud = new MongoDBManager();
-        mongo.openConection("Name");
-        cloud.update("Address", txtOldDirección.getText(), txtNewDireccion.getText());
-        txtOldDirección.setText("");
-        txtNewDireccion.setText("");
-        TablasController studentC = new TablasController();
-        tblStudent.setModel(studentC.tableStudent());
-        MongoDBManager.getMongoC().close();
-    }//GEN-LAST:event_btnDireccionActualizarActionPerformed
+    private void txtNewEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewEdadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNewEdadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,12 +290,7 @@ public class FrmActualizar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCarreraActualizar;
-    private javax.swing.JButton btnCorreoActualizar;
-    private javax.swing.JButton btnDireccionActualizar;
     private javax.swing.JButton btnEdadActualizar;
-    private javax.swing.JButton btnIDUpdate;
-    private javax.swing.JButton btnNameUpdate;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnShow;
     private javax.swing.JLabel jLabel1;
@@ -390,7 +312,6 @@ public class FrmActualizar extends javax.swing.JFrame {
     private javax.swing.JTextField txtNewCorreo;
     private javax.swing.JTextField txtNewDireccion;
     private javax.swing.JTextField txtNewEdad;
-    private javax.swing.JTextField txtNewID;
     private javax.swing.JTextField txtNewName;
     private javax.swing.JTextField txtOldCarrera;
     private javax.swing.JTextField txtOldCorreo;
