@@ -58,6 +58,7 @@ public class FrmGenerarCarnet extends javax.swing.JFrame {
         btnCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         pnlCarnet.setBackground(new java.awt.Color(204, 204, 204));
 
