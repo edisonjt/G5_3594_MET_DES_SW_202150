@@ -8,6 +8,7 @@ package prototipodecarnetdigital.view;
 import ec.edu.espe.datamanager.controller.Persistance;
 import ec.edu.espe.datamanager.utils.MongoDBManager;
 import ec.edu.espe.datamanager.utils.NSQLDBManager;
+import javax.swing.JOptionPane;
 import prototipodecarnetdigital.controller.TablasController;
 
 /**
@@ -51,12 +52,10 @@ public class FrmActualizar extends javax.swing.JFrame {
         txtNewName = new javax.swing.JTextField();
         txtOldID = new javax.swing.JTextField();
         txtOldCarrera = new javax.swing.JTextField();
-        txtNewCarrera = new javax.swing.JTextField();
         txtOldCorreo = new javax.swing.JTextField();
         txtNewCorreo = new javax.swing.JTextField();
         txtOldDirección = new javax.swing.JTextField();
         txtNewDireccion = new javax.swing.JTextField();
-        txtNewEdad = new javax.swing.JTextField();
         txtOldEdad = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblStudent = new javax.swing.JTable();
@@ -70,7 +69,10 @@ public class FrmActualizar extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnEdadActualizar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        spnEdad = new javax.swing.JSpinner();
+        cmbCarrera = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
 
         jTextField1.setText("jTextField1");
 
@@ -100,22 +102,20 @@ public class FrmActualizar extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 51, 255));
         jLabel4.setText("Anterior");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
+
+        txtNewName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNewNameKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtNewName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 230, -1));
         jPanel1.add(txtOldID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 230, -1));
         jPanel1.add(txtOldCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 230, -1));
-        jPanel1.add(txtNewCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 230, -1));
         jPanel1.add(txtOldCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 230, -1));
         jPanel1.add(txtNewCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 230, -1));
         jPanel1.add(txtOldDirección, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 230, -1));
         jPanel1.add(txtNewDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 230, -1));
-
-        txtNewEdad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNewEdadActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtNewEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 230, -1));
-        jPanel1.add(txtOldEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 230, -1));
+        jPanel1.add(txtOldEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 50, -1));
 
         tblStudent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -161,26 +161,26 @@ public class FrmActualizar extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
         jLabel9.setText("Edad:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 40, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 30, -1));
 
         jLabel8.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
         jLabel8.setText("Dirección:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
         jLabel6.setText("Carrera:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
         jLabel7.setText("Correo Institucional:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
         jLabel5.setText("ID:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
-        jLabel2.setText("Nombre y Apellido:");
+        jLabel2.setText("Nombres y Apellidos:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         btnEdadActualizar.setText("Actualizar");
@@ -194,8 +194,20 @@ public class FrmActualizar extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoActualizarDatos.png"))); // NOI18N
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, -1, -1));
 
+        spnEdad.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
+        spnEdad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                spnEdadKeyTyped(evt);
+            }
+        });
+        jPanel1.add(spnEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, -1, -1));
+
+        cmbCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tecnologías de la Información", "Software" }));
+        jPanel1.add(cmbCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 230, -1));
+
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actualizarDatos11.jpg"))); // NOI18N
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 570));
 
@@ -223,16 +235,31 @@ public class FrmActualizar extends javax.swing.JFrame {
         mongo = new MongoDBManager();
         cloud = new MongoDBManager();
         mongo.openConection("Name");
-        cloud.update("Name", txtOldName.getText(), txtNewName.getText());
-        String old = txtOldEdad.getText();
-        String newT = txtNewEdad.getText();
-        cloud.update("Age", old, newT);
-        cloud.update("ID", txtOldID.getText(), txtOldID.getText());
-        cloud.update("Correo", txtOldCorreo.getText(), txtNewCorreo.getText());
-        cloud.update("Career", txtOldCarrera.getText(), txtNewCarrera.getText());      
-        cloud.update("Address", txtOldDirección.getText(), txtNewDireccion.getText());        
-        tblStudent.setModel(studentC.tableStudent());
-        MongoDBManager.getMongoC().close();
+        String carrera = cmbCarrera.getSelectedItem().toString();
+        String edad = spnEdad.getValue().toString();
+
+        int n = JOptionPane.showConfirmDialog(null, "Seguro que desea actualizar estos datos?", "Actualizar", JOptionPane.YES_NO_OPTION);
+
+        if (n == JOptionPane.YES_OPTION) {
+
+            cloud.update("Name", txtOldName.getText(), txtNewName.getText());     
+            cloud.update("ID", txtOldID.getText(), txtOldID.getText());
+            cloud.update("Correo", txtOldCorreo.getText(), txtNewCorreo.getText());
+            cloud.update("Career", txtOldCarrera.getText(), carrera);
+            cloud.update("Address", txtOldDirección.getText(), txtNewDireccion.getText());
+            String old = txtOldEdad.getText();
+            cloud.update("Age", old, edad);
+            tblStudent.setModel(studentC.tableStudent());
+            JOptionPane.showMessageDialog(null, "Datos Actualizados.");
+            MongoDBManager.getMongoC().close();
+
+        } else if (n == JOptionPane.NO_OPTION) {
+            
+            JOptionPane.showMessageDialog(null, "Datos No Actualizados.");
+
+        }
+
+
     }//GEN-LAST:event_btnEdadActualizarActionPerformed
 
     private void tblStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblStudentMouseClicked
@@ -243,16 +270,30 @@ public class FrmActualizar extends javax.swing.JFrame {
         txtOldCorreo.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 2)));
         txtNewCorreo.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 2)));
         txtOldCarrera.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 3)));
-        txtNewCarrera.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 3)));
+        cmbCarrera.setToolTipText(String.valueOf(tblStudent.getValueAt(seleccionar, 3)));
         txtOldDirección.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 4)));
         txtNewDireccion.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 4)));
         txtOldEdad.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 5)));
-        txtNewEdad.setText(String.valueOf(tblStudent.getValueAt(seleccionar, 5)));
+        spnEdad.setToolTipText(String.valueOf(tblStudent.getValueAt(seleccionar, 5)));
     }//GEN-LAST:event_tblStudentMouseClicked
 
-    private void txtNewEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewEdadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNewEdadActionPerformed
+    private void txtNewNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewNameKeyTyped
+        char validate = evt.getKeyChar();
+
+        if (Character.isDigit(validate)) {
+            getToolkit().beep();
+            evt.consume();
+
+            JOptionPane.showMessageDialog(rootPane, "Solo se permite ingresar letras.");
+        }
+    }//GEN-LAST:event_txtNewNameKeyTyped
+
+    private void spnEdadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spnEdadKeyTyped
+        if (spnEdad.getValue().toString().length() <= 0) {
+            JOptionPane.showMessageDialog(null, "No se admiten numeros negativos.");
+            evt.consume();
+        }
+    }//GEN-LAST:event_spnEdadKeyTyped
 
     /**
      * @param args the command line arguments
@@ -293,6 +334,7 @@ public class FrmActualizar extends javax.swing.JFrame {
     private javax.swing.JButton btnEdadActualizar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnShow;
+    private javax.swing.JComboBox<String> cmbCarrera;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -306,12 +348,12 @@ public class FrmActualizar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JSpinner spnEdad;
     private javax.swing.JTable tblStudent;
-    private javax.swing.JTextField txtNewCarrera;
     private javax.swing.JTextField txtNewCorreo;
     private javax.swing.JTextField txtNewDireccion;
-    private javax.swing.JTextField txtNewEdad;
     private javax.swing.JTextField txtNewName;
     private javax.swing.JTextField txtOldCarrera;
     private javax.swing.JTextField txtOldCorreo;

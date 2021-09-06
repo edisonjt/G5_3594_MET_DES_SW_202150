@@ -61,23 +61,18 @@ public class FrmSolicitud extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nombres:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Carrera: ");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Dirección:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
 
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Edad:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, -1, -1));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("ID:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
 
@@ -98,6 +93,11 @@ public class FrmSolicitud extends javax.swing.JFrame {
                 txtIDActionPerformed(evt);
             }
         });
+        txtID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIDKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 140, -1));
 
         txtDireccion.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +108,7 @@ public class FrmSolicitud extends javax.swing.JFrame {
         jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 202, -1));
 
         lstCarrera.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Tecnologias de la Información", "Software", " " };
+            String[] strings = { "Tecnologías de la Información", "Software", " " };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -116,6 +116,7 @@ public class FrmSolicitud extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 230, 50));
 
+        spnEdad.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
         spnEdad.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 spnEdadKeyTyped(evt);
@@ -140,11 +141,9 @@ public class FrmSolicitud extends javax.swing.JFrame {
         jPanel1.add(btnRegresarLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 490, 90, -1));
 
         jLabel6.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("SOLICITUD PARA CARNET VIRTUAL");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Correo:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
 
@@ -199,7 +198,7 @@ public class FrmSolicitud extends javax.swing.JFrame {
                 MongoDBManager.getMongoC().close();
 
                 System.out.println("===========================================================");
-                System.out.println("Your request has been successfully saved!!");
+                System.out.println("Tu información fue correctamente enviada!!");
                 System.out.println("===========================================================");
                 JOptionPane.showMessageDialog(null, "Información enviada.", txtNombres.getText() + "Enviado", JOptionPane.INFORMATION_MESSAGE);
                 LoginForm menu = new LoginForm();
@@ -207,13 +206,13 @@ public class FrmSolicitud extends javax.swing.JFrame {
                 menu.setVisible(true);
 
             } else if (selection == 1) {
-                JOptionPane.showMessageDialog(null, "Information was not saved", txtNombres.getText() + "Not saved", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "La información no se guardo.", txtNombres.getText() + "No Guardado", JOptionPane.ERROR_MESSAGE);
                 emptyFields();
             } else {
-                JOptionPane.showMessageDialog(null, "Action was canceled", txtNombres.getText() + "Canceled", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Acción Cancelada.", txtNombres.getText() + "Cancelado", JOptionPane.WARNING_MESSAGE);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No data has been entered, please try again", txtNombres.getText() + "ERROR", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No existe datos ingresados, por favor intente de nuevo.", txtNombres.getText() + "ERROR", JOptionPane.WARNING_MESSAGE);
         }
 
 
@@ -241,11 +240,9 @@ public class FrmSolicitud extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombresKeyTyped
 
     private void spnEdadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spnEdadKeyTyped
-        char car = evt.getKeyChar();
-        if ((car < '0' || car > '9')) {
-            if ((car != '-') && (car != '+')) {
-                evt.consume();
-            }
+        if (spnEdad.getValue().toString().length() <= 0) {
+            JOptionPane.showMessageDialog(null, "No se admiten numeros negativos.");
+            evt.consume();
         }
     }//GEN-LAST:event_spnEdadKeyTyped
 
@@ -261,11 +258,20 @@ public class FrmSolicitud extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
 
-    public void emptyFields() {
+    private void txtIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyTyped
+        if (txtID.getText().length() >= 9) {
+            JOptionPane.showMessageDialog(null, "Solo se admiten 9 caracteres.");
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtIDKeyTyped
+
+public void emptyFields() {
         txtNombres.setText("");
         txtID.setText("");
+        lstCarrera.clearSelection();
+        txtCorreo.setText("");
         txtDireccion.setText("");
-        spnEdad.setValue(false);
+        spnEdad.setValue(1);
     }
 
     /**
@@ -282,16 +288,28 @@ public class FrmSolicitud extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+                
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmSolicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmSolicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmSolicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmSolicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSolicitud.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FrmSolicitud.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FrmSolicitud.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FrmSolicitud.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

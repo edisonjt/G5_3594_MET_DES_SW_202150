@@ -27,6 +27,11 @@ public class FrmNomina extends javax.swing.JFrame {
     public FrmNomina() {
         initComponents();
         this.setLocation(50, 100);
+        txtNombre.setEnabled(false);
+        txtID.setEnabled(false);
+        txtDireccion.setEnabled(false);
+        txtCorreo.setEnabled(false);
+        txtCarrera.setEnabled(false);
         //this.setLocationRelativeTo(null);
     }
 
